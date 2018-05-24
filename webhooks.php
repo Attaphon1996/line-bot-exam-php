@@ -17,6 +17,25 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['source']['userId'];
+			$file = fopen("vardump.txt", "r");
+$members = explode("\n", file_get_contents("vardump.txt"));
+fclose($file);
+
+$userid = $members;
+array_push($userid,$text);
+$userid = array_unique($userid);
+$useridstring = "";
+for( $i = 0;$i<count($userid);$i++){
+	if($i == 0 ){
+		$useridstring = $useridstring.$userid[$i];
+	}
+	else{
+		$useridstring = $useridstring."\n".$userid[$i];
+	}
+}
+$fp = fopen('vardump.txt', 'w');
+fwrite($fp,$useridstring );
+fclose($fp);
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
