@@ -1,8 +1,10 @@
 <?php
 
 require "vendor/autoload.php";
+header('Access-Control-Allow-Origin: *');
 if (isset($_GET['masg'])) {
 	$data = $_GET['masg'];
+	echo $data;
 	$access_token = '1xRbg9ZC/ZDa9yTUfcsnca6+776kRaRV1SYOHEHLVsAdGVroKwefKlR48C1O/hVTYQtcDqujTEyK8McaiqaoudaL2BsAUxbf91jJkxnyrTYlDTB8hSBtAMm/uASSo6WDt9KbKjPl0ZbI9fpU6mNqMgdB04t89/1O/w1cDnyilFU=';
 	$channelSecret = '11c8e5f96b7d59d300b100092b5834d3';
 
