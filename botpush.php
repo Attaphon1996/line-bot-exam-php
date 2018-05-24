@@ -6,7 +6,7 @@ if (isset($_GET['stationid'])) {
 	$stationid = $_GET['stationid'];
 	$modeold = $_GET['modeold'];
 	$modenew = $_GET['modenew'];
-	$data = "station : ".$stationid." change mode from ".$modeold." to ".$modenew;
+	$data = "Station : ".$stationid." Change Mode From ".$modeold." To ".$modenew;
 	echo $data;
 	$access_token = '1xRbg9ZC/ZDa9yTUfcsnca6+776kRaRV1SYOHEHLVsAdGVroKwefKlR48C1O/hVTYQtcDqujTEyK8McaiqaoudaL2BsAUxbf91jJkxnyrTYlDTB8hSBtAMm/uASSo6WDt9KbKjPl0ZbI9fpU6mNqMgdB04t89/1O/w1cDnyilFU=';
 	$channelSecret = '11c8e5f96b7d59d300b100092b5834d3';
