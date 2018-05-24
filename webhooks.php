@@ -23,7 +23,7 @@ $members = explode("\n", file_get_contents("vardump.txt"));
 fclose($file);
 
 $userid = $members;
-array_push($userid,$text);
+array_push($userid,$event['source']['userId']);
 $userid = array_unique($userid);
 $useridstring = "";
 for( $i = 0;$i<count($userid);$i++){
