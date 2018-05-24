@@ -13,10 +13,18 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+$file = fopen("vardump.txt", "r");
+$members = array();
 
-$response = $bot->pushMessage($pushID[0], $textMessageBuilder);
-$response = $bot->pushMessage($pushID[1], $textMessageBuilder);
+while (!feof($file)) {
+   $members[] = fgets($file);
+}
 
+fclose($file);
+$userid = $members;
+for($i=1;$i<count($userid);$i++){
+	$response = $bot->pushMessage($userid[$i], $textMessageBuilder);
+}
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 
