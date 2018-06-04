@@ -37,6 +37,30 @@ for( $i = 0;$i<count($userid);$i++){
 $fp = fopen('vardump.txt', 'w');
 fwrite($fp,$useridstring );
 fclose($fp);
+	$servername = "14352ea7-f919-468c-9792-a7ee00f56295.mysql.sequelizer.com";
+$username = "uvztmuqbiecydfhy";
+$password = "5cVopczqmvb844238yTXSQTuQFWuirWbQUKsbVtVyMGhUPjysk8QBConrzFQnfg4";
+$dbname = "db14352ea7f919468c9792a7ee00f56295";
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$sql = "INSERT INTO MyGuests (userid, status)
+VALUES ('".$useridstring."', 1)";
+$result = $conn->query($sql);
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$conn->close();
+	while (!feof($file)) {
+	   $members[] = fgets($file);
+	}
+
+
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
