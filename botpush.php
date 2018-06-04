@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
 	$i = 0;
     while($row = $result->fetch_assoc()) {
 		echo "id: " . $row["userid"];
-		userformdb[$i] = $row["userid"];
+		$userformdb[$i] = $row["userid"];
 		$i = $i+1;
 	}
 } else {
@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
 
 	fclose($file);
 	$userid = $userformdb;
-	for($i=1;$i<count($userid);$i++){
+	for($i=0;$i<count($userid);$i++){
 		$response = $bot->pushMessage($userid[$i], $textMessageBuilder);
 	}
 	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
