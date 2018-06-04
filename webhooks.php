@@ -47,7 +47,7 @@ $conn = new mysqli($servername, $username, $password,$dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-$sql = "INSERT INTO MyGuests (userid, status)
+$sql = "INSERT INTO user (userid, status)
 VALUES ('".$useridstring."', 1)";
 $result = $conn->query($sql);
 if ($conn->query($sql) === TRUE) {
