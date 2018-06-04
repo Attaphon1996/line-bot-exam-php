@@ -19,25 +19,7 @@ if (!is_null($events['events'])) {
 			//$text = $event['source']['userId'];
 			$text = "รับแจ้งเตือนแล้วครับ";
 			$file = fopen("vardump.txt", "r");
-$members = explode("\n", file_get_contents("vardump.txt"));
-fclose($file);
-
-$userid = $members;
-array_push($userid,$event['source']['userId']);
-$userid = array_unique($userid);
-$useridstring = "";
-for( $i = 0;$i<count($userid);$i++){
-	if($i == 0 ){
-		$useridstring = $useridstring.$userid[$i];
-	}
-	else{
-		$useridstring = $useridstring."\n".$userid[$i];
-	}
-}
-$fp = fopen('vardump.txt', 'w');
-fwrite($fp,$useridstring );
-fclose($fp);
-	$servername = "14352ea7-f919-468c-9792-a7ee00f56295.mysql.sequelizer.com";
+$servername = "14352ea7-f919-468c-9792-a7ee00f56295.mysql.sequelizer.com";
 $username = "uvztmuqbiecydfhy";
 $password = "5cVopczqmvb844238yTXSQTuQFWuirWbQUKsbVtVyMGhUPjysk8QBConrzFQnfg4";
 $dbname = "db14352ea7f919468c9792a7ee00f56295";
@@ -47,8 +29,7 @@ $conn = new mysqli($servername, $username, $password,$dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-$sql = "INSERT INTO user (userid, status)
-VALUES ('".$event['source']['userId']."', 1)";
+$sql = "INSERT INTO user (userid, status) VALUES ('".$event['source']['userId']."', 1)";
 $result = $conn->query($sql);
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -56,9 +37,6 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 $conn->close();
-	while (!feof($file)) {
-	   $members[] = fgets($file);
-	}
 
 
 			// Get replyToken
