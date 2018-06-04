@@ -29,7 +29,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 if($event['message']['text']=="รับแจ้งเตือน"){
-$sql = "INSERT INTO user (userid, status) VALUES ('".$event['source']['userId']."', 1)";
+$sql = "INSERT IGNORE INTO user (userid, status) VALUES ('".$event['source']['userId']."', 1)";
 $result = $conn->query($sql);
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
