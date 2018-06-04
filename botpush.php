@@ -17,9 +17,29 @@ if (isset($_GET['stationid'])) {
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($data);
+		
 	$file = fopen("vardump.txt", "r");
 	$members = array();
-
+	$servername = "14352ea7-f919-468c-9792-a7ee00f56295.mysql.sequelizer.com";
+$username = "uvztmuqbiecydfhy";
+$password = "5cVopczqmvb844238yTXSQTuQFWuirWbQUKsbVtVyMGhUPjysk8QBConrzFQnfg4";
+$dbname = "db14352ea7f919468c9792a7ee00f56295";
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$sql = "SELECT userid FROM user WHERE status=1";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+		echo "id: " . $row["userid"];
+	}
+} else {
+    echo "0 results";
+}
 	while (!feof($file)) {
 	   $members[] = fgets($file);
 	}
