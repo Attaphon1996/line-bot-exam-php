@@ -32,10 +32,14 @@ if ($conn->connect_error) {
 } 
 $sql = "SELECT userid FROM user WHERE status=1";
 $result = $conn->query($sql);
+$userformdb;
 if ($result->num_rows > 0) {
     // output data of each row
+	$i = 0;
     while($row = $result->fetch_assoc()) {
 		echo "id: " . $row["userid"];
+		userformdb[$i] = $row["userid"];
+		$i = $i+1;
 	}
 } else {
     echo "0 results";
@@ -45,7 +49,7 @@ if ($result->num_rows > 0) {
 	}
 
 	fclose($file);
-	$userid = $members;
+	$userid = $userformdb;
 	for($i=1;$i<count($userid);$i++){
 		$response = $bot->pushMessage($userid[$i], $textMessageBuilder);
 	}

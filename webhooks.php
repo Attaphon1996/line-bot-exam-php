@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			//$text = $event['source']['userId'];
-			$text = "รับแจ้งเตือนแล้วครับ".$event['message']['text'];
+			$text = "เลือกคำสั่งที่เมนูด้านล่าง";
 $servername = "14352ea7-f919-468c-9792-a7ee00f56295.mysql.sequelizer.com";
 $username = "uvztmuqbiecydfhy";
 $password = "5cVopczqmvb844238yTXSQTuQFWuirWbQUKsbVtVyMGhUPjysk8QBConrzFQnfg4";
@@ -29,6 +29,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 if($event['message']['text']=="รับแจ้งเตือน"){
+$text = "รับแจ้งเตือนแล้วครับ";
 $sql = "INSERT IGNORE INTO user (userid, status) VALUES ('".$event['source']['userId']."', 1)";
 $result = $conn->query($sql);
 if ($conn->query($sql) === TRUE) {
